@@ -28,28 +28,67 @@ const Walkthrough1 = () => {
   const row1FlatListRef = React.useRef();
   const row2FlatListRef = React.useRef();
 
-  // useEffect(() => {
-  //   let positionTimer;
+  useEffect(() => {
+    let positionTimer;
 
-  //   const timer = () => {
-  //     positionTimer = setTimeout(() => {
-  //       // Increment scroll position
-  //       // Slider 1
-  //       setCurrentPosition(prevPosition => {
-  //         const position = Number(prevPosition) + 1;
-  //         row1FlatListRef?.current?.scrollToOffset({offset: position, animated: false})
+    const timer = () => {
+      positionTimer = setTimeout(() => {
+        // Increment scroll position
+        // Slider 1
+        setCurrentPosition((prevPosition) => {
+          const position = Number(prevPosition) + 1;
+          row1FlatListRef?.current?.scrollToOffset({
+            offset: position,
+            animated: false,
+          });
 
-  //         // const maxOffset = co
-  //       })
-  //       // Slider 2
-  //     }, 32);
-  //   };
-  //   timer();
+          const maxOffset =
+            constants.walkthrough_01_01_images.length * ITEM_WIDTH;
 
-  //   return () => {
-  //     clearTimeout(positionTimer);
-  //   };
-  // }, []);
+          if (prevPosition > maxOffset) {
+            const offset = prevPosition - maxOffset;
+
+            row1FlatListRef?.current?.scrollToOffset({
+              offset,
+              animated: false,
+            });
+            return offset;
+          } else {
+            return position;
+          }
+        });
+        // Slider 2
+        setRow2CurrentPosition((prevPosition) => {
+          const position = Number(prevPosition) + 1;
+          row2FlatListRef?.current?.scrollToOffset({
+            offset: position,
+            animated: false,
+          });
+
+          const maxOffset =
+            constants.walkthrough_01_02_images.length * ITEM_WIDTH;
+
+          if (prevPosition > maxOffset) {
+            const offset = prevPosition - maxOffset;
+
+            row2FlatListRef?.current?.scrollToOffset({
+              offset,
+              animated: false,
+            });
+            return offset;
+          } else {
+            return position;
+          }
+        });
+        timer();
+      }, 32);
+    };
+    timer();
+
+    return () => {
+      clearTimeout(positionTimer);
+    };
+  }, []);
 
   return (
     <View>
@@ -79,9 +118,9 @@ const Walkthrough1 = () => {
       />
       {/* Slider 2 */}
       <FlatList
-        ref={row1FlatListRef}
+        ref={row2FlatListRef}
         decelerationRate="fast"
-        style={{ marginTop: SIZES.padding }}
+        style={{ marginTop: SIZES.padding, transform: [{ rotate: "180deg" }] }}
         horizontal
         showsHorizontalScrollIndicator={false}
         listKey="Slider2"
@@ -95,6 +134,7 @@ const Walkthrough1 = () => {
                 width: ITEM_WIDTH,
                 alignItems: "center",
                 justifyContent: "center",
+                transform: [{ rotate: "180deg" }],
               }}
             >
               <Image source={item} style={{ width: 110, height: 110 }} />

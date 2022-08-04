@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Animated } from "react-native";
 import { COLORS, constants, SIZES, FONTS } from "../../constants";
 import { TextButton } from "../../components";
 import Walkthrough1 from "./Walkthrough1";
+import Walkthrough2 from "./Walkthrough2";
+import Walkthrough3 from "./Walkthrough3";
+import Walkthrough4 from "./Walkthrough4";
 
-const Walkthrough = () => {
+const Walkthrough = ({ navigation }) => {
+  // Walkthrough2
+  const [walkthrough2Animated, setWalkthrough2Animated] = useState(false);
+  const onViewChangeRef = React.useRef(({ viewableItems, changed }) => {
+    if (viewableItems[0].index == 1) {
+      setWalkthrough2Animated(true);
+    }
+  });
+
   const scrollX = new Animated.Value(0);
   const Dots = () => {
     const dotPosition = Animated.divide(scrollX, SIZES.width);
@@ -80,6 +91,12 @@ const Walkthrough = () => {
             labelStyle={{
               ...FONTS.h3,
             }}
+            onPress={() => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "AuthMain1" }],
+              });
+            }}
           />
         </View>
       </View>
@@ -95,6 +112,7 @@ const Walkthrough = () => {
         decelerationRate="fast"
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
+        onViewableItemsChanged={onViewChangeRef.current}
         onScroll={Animated.event(
           [
             {
@@ -116,6 +134,9 @@ const Walkthrough = () => {
               {/* Walkthrough images */}
               <View style={{ flex: 1, justifyContent: "center" }}>
                 {index == 0 && <Walkthrough1 />}
+                {index == 1 && <Walkthrough2 animate={walkthrough2Animated} />}
+                {index == 2 && <Walkthrough3 />}
+                {index == 3 && <Walkthrough4 />}
               </View>
               {/* Title & Descriptions */}
               <View
