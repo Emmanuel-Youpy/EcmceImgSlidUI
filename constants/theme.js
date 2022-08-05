@@ -118,27 +118,26 @@ export const FONTS = {
   h4: { fontSize: SIZES.h4, lineHeight: 22 },
   h5: { fontSize: SIZES.h5, lineHeight: 22 },
   body1: {
-    fontFamily: "Poppins-Regular",
     fontSize: SIZES.body1,
     lineHeight: 36,
   },
   body2: {
-    fontFamily: "Poppins-Regular",
+    // fontFamily: "Poppins-Regular",
     fontSize: SIZES.body2,
     lineHeight: 30,
   },
   body3: {
-    fontFamily: "Poppins-Regular",
+    // fontFamily: "Poppins-Regular",
     fontSize: SIZES.body3,
     lineHeight: 22,
   },
   body4: {
-    fontFamily: "Poppins-Regular",
+    // fontFamily: "Poppins-Regular",
     fontSize: SIZES.body4,
     lineHeight: 22,
   },
   body5: {
-    fontFamily: "Poppins-Regular",
+    // fontFamily: "Poppins-Regular",
     fontSize: SIZES.body5,
     lineHeight: 22,
   },
