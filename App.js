@@ -3,7 +3,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { Welcome, Walkthrough, AuthMain1 } from "./screens";
+import {
+  Welcome,
+  Walkthrough,
+  AuthMain1,
+  HomeScreen,
+  ScanProductScreen,
+} from "./screens";
 import AuthMain2 from "./screens/Authentication/AuthMain2";
 
 // const Stack = createStackNavigator();
@@ -22,6 +28,8 @@ const App = () => {
         <Stack.Screen name="Walkthrough" component={Walkthrough} />
         <Stack.Screen name="AuthMain1" component={AuthMain1} />
         <Stack.Screen name="AuthMain2" component={AuthMain2} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="ScanProductScreen" component={ScanProductScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { COLORS, SIZES, images, FONTS, icons } from "../../constants";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
@@ -13,7 +13,7 @@ import {
   CheckBox,
 } from "../../components";
 
-const AuthMain2 = () => {
+const AuthMain2 = ({ navigation }) => {
   // Country
   const [countries, setCountries] = React.useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -255,8 +255,26 @@ const AuthMain2 = () => {
                 }
               />
               {/* Termas abd Conditions */}
-              <CheckBox />
+              <CheckBox
+                containerStyle={{
+                  marginTop: SIZES.radius,
+                }}
+                isSelected={termsChecked}
+                onPress={() => setTermsChecked(!termsChecked)}
+              />
             </KeyboardAwareScrollView>
+            <TextButton
+              label="Create Account"
+              contentContainerStyle={{
+                height: 55,
+                borderRadius: SIZES.radius,
+                backgroundColor: COLORS.primary,
+              }}
+              labelStyle={{
+                ...FONTS.h3,
+              }}
+              onPress={() => console.log("create account")}
+            />
           </View>
         </Shadow>
       </View>
@@ -288,19 +306,20 @@ const AuthMain2 = () => {
         }}
       />
       {/* Auth Container */}
-      <View style={{ height: "60%" }}>{renderSignUp()}</View>
-      <TextButton
-        label="Toggle"
-        onPress={() => {
-          if (animationState.current === "signIn") {
-            animationState.transitionTo("signUp");
-            setMode("signUp");
-          } else {
-            animationState.transitionTo("signIn");
-            setMode("signIn");
-          }
+      <View style={{ height: "70%" }}>{renderSignUp()}</View>
+      <View
+        style={{
+          alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "center",
+          paddingTop: 10,
         }}
-      />
+      >
+        <Text style={{ color: "lightgrey" }}>Already have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("AuthMain1")}>
+          <Text style={{ color: COLORS.secondary }}>Login</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

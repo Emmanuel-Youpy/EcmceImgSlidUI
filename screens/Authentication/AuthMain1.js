@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { COLORS, SIZES, images, FONTS, icons } from "../../constants";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
@@ -7,6 +7,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { shadow, Shadow } from "react-native-shadow-2";
 import { TextButton, FormInput, IconButton } from "../../components";
 import AuthMain2 from "./AuthMain2";
+import HomeScreen from "../Home/HomeScreen";
 // import { useAnimationState } from "moti";
 
 const AuthMain1 = ({ navigation }) => {
@@ -114,7 +115,7 @@ const AuthMain1 = ({ navigation }) => {
               />
               <View style={{ alignItems: "flex-end" }}>
                 <TextButton
-                  label="Forget Password?"
+                  label="Forgot Password?"
                   contentContainerStyle={{
                     marginTop: SIZES.radius,
                     backgroundColor: null,
@@ -133,7 +134,7 @@ const AuthMain1 = ({ navigation }) => {
               labelStyle={{
                 ...FONTS.h3,
               }}
-              onPress={() => navigation.navigate(AuthMain2)}
+              onPress={() => navigation.navigate("HomeScreen")}
             />
           </View>
         </Shadow>
@@ -152,9 +153,10 @@ const AuthMain1 = ({ navigation }) => {
               paddingHorizontal: SIZES.padding,
               borderRadius: SIZES.radius,
               backgroundColor: "COLORS.light",
+              zIndex: 1,
             }}
           >
-            <Text>Sign un</Text>
+            {/* <Text>Sign un</Text> */}
           </View>
         </Shadow>
       </View>
@@ -167,6 +169,86 @@ const AuthMain1 = ({ navigation }) => {
   //       return renderSignUp();
   //     }
   //   }
+
+  //   function renderAuthContainerFooter() {
+  //     <View
+  //       style={{
+  //         flexDirection: "row",
+  //         height: 80,
+  //         alignItems: "flex-end",
+  //         justifyContent: "center",
+  //         marginTop: -30,
+  //         marginHorizontal: SIZES.radius,
+  //         paddingBottom: SIZES.radius,
+  //         borderBottomLeftRadius: SIZES.radius,
+  //         borderBottomRightRadius: SIZES.radius,
+  //         backgroundColor: COLORS.light60,
+  //         // zIndex: 0,
+  //       }}
+  //     >
+  //       <Text style={{ color: COLORS.grey, ...FONTS.body5 }}>Sign Up</Text>
+  //     </View>;
+  //   }
+
+  function renderSocialLogins() {
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: -30,
+        }}
+      >
+        <View style={{ paddingBottom: 10 }}>
+          <Text style={{ color: COLORS.dark, ...FONTS.body3 }}>
+            OR Login with
+          </Text>
+        </View>
+        <View style={{ flexDirection: "row", marinTop: SIZES.radius }}>
+          <IconButton
+            icon={icons.twitter}
+            iconStyle={{ tintColor: COLORS.dark }}
+            containerStyle={{
+              width: 55,
+              height: 55,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: SIZES.radius,
+              backgroundColor: COLORS.grey20,
+            }}
+          />
+          <IconButton
+            icon={icons.google}
+            iconStyle={{ tintColor: COLORS.dark }}
+            containerStyle={{
+              width: 55,
+              height: 55,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: SIZES.radius,
+              backgroundColor: COLORS.grey20,
+              marginLeft: SIZES.radius,
+            }}
+          />
+          <IconButton
+            icon={icons.linkedin}
+            iconStyle={{ tintColor: COLORS.dark }}
+            containerStyle={{
+              width: 55,
+              height: 55,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: SIZES.radius,
+              backgroundColor: COLORS.grey20,
+              marginLeft: SIZES.radius,
+            }}
+          />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
@@ -186,8 +268,8 @@ const AuthMain1 = ({ navigation }) => {
         }}
       />
       {/* Auth Container */}
-      <View>{renderSignIn()}</View>
-      <TextButton
+      <View style={{ zIndex: 1 }}>{renderSignIn()}</View>
+      {/* <TextButton
         label="Toggle"
         onPress={() => {
           if (animationState.current === "signIn") {
@@ -198,7 +280,27 @@ const AuthMain1 = ({ navigation }) => {
             setMode("signIn");
           }
         }}
-      />
+      /> */}
+      <View
+        style={{
+          alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "center",
+          paddingTop: 10,
+        }}
+      >
+        {/* Not Workinf TouchableOpacity */}
+        <Text style={{ color: "lightgrey" }}>Don't have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("AuthMain2")}>
+          <View>
+            <Text style={{ color: COLORS.secondary }}>Create new account</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {renderSocialLogins()}
+
+      {/* {renderAuthContainerFooter()} */}
     </View>
   );
 };

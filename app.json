@@ -1,6 +1,9 @@
 {
   "expo": {
     "name": "EcommerceApp",
+    "plugins": [
+      "react-native-vision-camera"
+    ],
     "slug": "EcommerceApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,13 +21,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.youpil.EcommerceApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
