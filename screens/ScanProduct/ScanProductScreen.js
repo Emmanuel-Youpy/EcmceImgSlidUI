@@ -49,64 +49,64 @@ const ScanProductScreen = ({ navigation }) => {
       </View>
     );
   }
-  //   function renderFooter() {
-  //     return (
-  //       <View
-  //         style={{
-  //           flexDirection: "row",
-  //           height: 90,
-  //           paddingTop: SIZES.radius,
-  //           backgroundColor: COLORS.light,
-  //         }}
-  //       >
-  //         <TextButton
-  //           label="Scan QR Code"
-  //           contentContainerStyle={{
-  //             flex: 1,
-  //             height: 55,
-  //             borderRadius: SIZES.radius,
-  //             backgroundColor:
-  //               selectedOption == constants.scan_product_option.qr
-  //                 ? COLORS.primary
-  //                 : COLORS.lightGrey,
-  //           }}
-  //           labelStyle={{
-  //             ...FONTS.h3,
-  //             color:
-  //               selectedOption == constants.scan_product_option.qr
-  //                 ? COLORS.secondary
-  //                 : COLORS.primary,
-  //           }}
-  //           onPress={() => {
-  //             setSelectedOption(constants.scan_product_option.qr);
-  //           }}
-  //         />
-  //         <TextButton
-  //           label="Scan Camera"
-  //           contentContainerStyle={{
-  //             flex: 1,
-  //             height: 55,
-  //             marginLeft: SIZES.radius,
-  //             borderRadius: SIZES.radius,
-  //             backgroundColor:
-  //               selectedOption == constants.scan_product_option.camera
-  //                 ? COLORS.primary
-  //                 : COLORS.lightGrey,
-  //           }}
-  //           labelStyle={{
-  //             ...FONTS.h3,
-  //             color:
-  //               selectedOption == constants.scan_product_option.camera
-  //                 ? COLORS.secondary
-  //                 : COLORS.primary,
-  //           }}
-  //           onPress={() => {
-  //             setSelectedOption(constants.scan_product_option.camera);
-  //           }}
-  //         />
-  //       </View>
-  //     );
-  //   }
+  function renderFooter() {
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          height: 90,
+          paddingTop: SIZES.radius,
+          backgroundColor: COLORS.light,
+        }}
+      >
+        <TextButton
+          label="Scan QR Code"
+          contentContainerStyle={{
+            flex: 1,
+            height: 55,
+            borderRadius: SIZES.radius,
+            backgroundColor:
+              selectedOption == constants.scan_product_option.qr
+                ? COLORS.primary
+                : COLORS.lightGrey,
+          }}
+          labelStyle={{
+            ...FONTS.h3,
+            color:
+              selectedOption == constants.scan_product_option.qr
+                ? COLORS.secondary
+                : COLORS.primary,
+          }}
+          onPress={() => {
+            setSelectedOption(constants.scan_product_option.qr);
+          }}
+        />
+        <TextButton
+          label="Scan Camera"
+          contentContainerStyle={{
+            flex: 1,
+            height: 55,
+            marginLeft: SIZES.radius,
+            borderRadius: SIZES.radius,
+            backgroundColor:
+              selectedOption == constants.scan_product_option.camera
+                ? COLORS.primary
+                : COLORS.lightGrey,
+          }}
+          labelStyle={{
+            ...FONTS.h3,
+            color:
+              selectedOption == constants.scan_product_option.camera
+                ? COLORS.secondary
+                : COLORS.primary,
+          }}
+          onPress={() => {
+            setSelectedOption(constants.scan_product_option.camera);
+          }}
+        />
+      </View>
+    );
+  }
   //   Camera
   // const cameraPermission = await Camera.getCameraPermissionStatus()
 
