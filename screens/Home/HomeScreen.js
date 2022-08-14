@@ -4,6 +4,7 @@ import { TextButton, HeroBanner, Footer } from "../../components";
 import { constants } from "../../constants";
 import sanityClient from "../../lib/client";
 import Products from "../../components/Products";
+import Navbar from "../../components/Navbar";
 
 const HomeScreen = ({ navigation }) => {
   const [bannr, setbannr] = useState([]);
@@ -33,10 +34,11 @@ const HomeScreen = ({ navigation }) => {
       });
   }, []);
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <SafeAreaView>
+      <Navbar />
       <View style={{ padding: 15 }}>
         {/* HeroBanner */}
         {bannr &&
